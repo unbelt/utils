@@ -1,0 +1,13 @@
+<main class="main" fxLayout="column" fxFlexFill>
+    <mat-toolbar>
+        <app-header class="main-header"></app-header>
+    </mat-toolbar>
+
+    <mat-card class="main-content">
+        <router-outlet></router-outlet>
+    </mat-card>
+
+    <mat-toolbar fxFlexOffset="auto">
+        <app-footer class="main-footer"></app-footer>
+    </mat-toolbar>
+</main>

@@ -1,0 +1,8 @@
+.todo-card {
+    width: 20%;
+
+    &:hover {
+        box-shadow: 0 10px 6px 0 rgba(0, 0, 0, 0.5);
+        cursor: pointer;
+    }
+}
