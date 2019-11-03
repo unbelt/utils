@@ -4,6 +4,7 @@
     "private": true,
     "scripts": {
         "build": "ng build",
+        "build:prod": "yarn build --prod",
         "format:check": "prettier --config prettier.config.js --list-different \"src/{app,environments,assets}/**/*{.ts,.js,.json,.css,.scss}\"",
         "format:fix": "pretty-quick --staged",
         "ng": "ng",
@@ -26,15 +27,12 @@
         "@angular/platform-browser": "~8.2.13",
         "@angular/platform-browser-dynamic": "~8.2.13",
         "@angular/router": "~8.2.13",
-        "@ngrx/data": "^8.4.0",
         "@ngrx/effects": "^8.4.0",
-        "@ngrx/entity": "^8.4.0",
-        "@ngrx/router-store": "^8.4.0",
         "@ngrx/store": "^8.4.0",
         "@ngrx/store-devtools": "^8.4.0",
         "rxjs": "~6.5.3",
         "tslib": "^1.10.0",
-        "zone.js": "~0.10.2"
+        "zone.js": "~0.9.1"
     },
     "devDependencies": {
         "@angular-devkit/build-angular": "~0.803.17",

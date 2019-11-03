@@ -1,12 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
-    selector: 'todo-nav',
+    selector: 'app-todo-nav',
     templateUrl: 'todo-nav.html',
     styleUrls: ['todo-nav.scss'],
 })
-export class TodoNavComponent implements OnInit {
-    constructor() {}
-
-    ngOnInit() {}
-}
+export class TodoNavComponent {}

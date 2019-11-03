@@ -1,8 +1,23 @@
 <mat-sidenav-container fxFlexFill>
     <mat-sidenav fxLayout="column" mode="side" opened>
-        <todo-nav></todo-nav>
+        <app-todo-nav></app-todo-nav>
     </mat-sidenav>
     <mat-sidenav-content>
-        List
+        <ng-template #list let-todos>
+            <mat-card *ngFor="let todo of todos" class="todo">
+                <mat-card-title>{{ todo.title }}</mat-card-title>
+                <mat-card-subtitle>
+                    {{ todo.description }}
+                </mat-card-subtitle>
+            </mat-card>
+        </ng-template>
+        <ng-template #loading>Loading...</ng-template>
+        <ng-container
+            *ngTemplateOutlet="
+                (isLoaded$ | async) ? list : loading;
+                context: { $implicit: todos$ | async }
+            "
+        >
+        </ng-container>
     </mat-sidenav-content>
 </mat-sidenav-container>

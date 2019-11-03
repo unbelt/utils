@@ -1,11 +1,16 @@
 # Utils
 
-Simple utils application with NGRX and Angular material
+Simple utils application build with Angular + NGRX & Material
+
+## Setup
+
+Run `yarn`
 
 ## Development server
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`.
+Run `yarn start` to build and start a dev server. Navigate to `http://localhost:4200/`.
 
 ## Build
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `--prod` flag for a production build.
+Run `yarn build` to build the project. The build artifacts will be stored in the `dist` directory.
+Use the `yarn build:prod` for a production build.

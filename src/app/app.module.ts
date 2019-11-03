@@ -4,7 +4,6 @@ import { MatCardModule, MatToolbarModule, MatTooltipModule } from '@angular/mate
 import { BrowserModule } from '@angular/platform-browser';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { EffectsModule } from '@ngrx/effects';
-import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { AboutComponent } from './about/about.component';
@@ -16,18 +15,19 @@ import { SharedModule } from './shared/shared.module';
 @NgModule({
     declarations: [AppComponent, HomeComponent, AboutComponent],
     imports: [
+        // Angular
         BrowserModule,
         NoopAnimationsModule,
         FlexLayoutModule,
-        AppRoutingModule,
-        SharedModule,
-
         MatCardModule,
         MatToolbarModule,
         MatTooltipModule,
 
+        // Internal
+        AppRoutingModule,
+        SharedModule,
+
         StoreModule.forRoot({}),
-        StoreRouterConnectingModule.forRoot(),
         StoreDevtoolsModule.instrument(),
         EffectsModule.forRoot([]),
     ],
