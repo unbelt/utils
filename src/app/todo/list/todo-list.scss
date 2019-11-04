@@ -1,0 +1,21 @@
+.todo,
+.todo-title-field,
+.todo-description-field,
+.add-todo-button {
+    width: 30%;
+    margin: 10px auto;
+    display: block;
+}
+
+.delete-todo-button {
+    float: right;
+}
+
+.completed {
+    opacity: 0.5;
+
+    .todo-title,
+    .todo-description {
+        text-decoration: line-through;
+    }
+}

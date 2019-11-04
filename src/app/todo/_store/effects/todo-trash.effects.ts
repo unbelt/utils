@@ -1,11 +1,12 @@
 import { Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { Store } from '@ngrx/store';
-import { map, switchMap } from 'rxjs/operators';
+import { filter, map, switchMap } from 'rxjs/operators';
 import { ITodo } from '../../todo.interfaces';
-import { loadTodoTrash } from '../actions/todo-trash.actions';
-import { getTodoTrashState } from '../selectors';
+import { loadTodoTrash, loadTodoTrashSuccess } from '../actions/todo-trash.actions';
 import { ITodoState } from '../reducers';
+import { getInactiveTodoListState } from '../selectors';
 
 @Injectable()
 export class TodoTrashEffects {
@@ -13,16 +14,13 @@ export class TodoTrashEffects {
         this.actions$.pipe(
             ofType(loadTodoTrash),
             switchMap(() =>
-                this.store
-                    .select(getTodoTrashState)
-                    .pipe(
-                        map((todos: ITodo[]) =>
-                            loadTodoTrash(todos.filter((todo: ITodo) => todo.isDeleted))
-                        )
-                    )
+                this.store.select(getInactiveTodoListState).pipe(
+                    filter(() => this.router.url.indexOf('trash') > -1),
+                    map((todos: ITodo[]) => loadTodoTrashSuccess(todos))
+                )
             )
         )
     );
 
-    constructor(private actions$: Actions, private store: Store<ITodoState>) {}
+    constructor(private actions$: Actions, private store: Store<ITodoState>, private router: Router) {}
 }

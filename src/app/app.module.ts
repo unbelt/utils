@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 import { MatCardModule, MatToolbarModule, MatTooltipModule } from '@angular/material';
 import { BrowserModule } from '@angular/platform-browser';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { NoopAnimationsModule, BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
@@ -17,7 +17,7 @@ import { SharedModule } from './shared/shared.module';
     imports: [
         // Angular
         BrowserModule,
-        NoopAnimationsModule,
+        BrowserAnimationsModule,
         FlexLayoutModule,
         MatCardModule,
         MatToolbarModule,

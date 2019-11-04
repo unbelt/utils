@@ -3,6 +3,29 @@
         <app-todo-nav></app-todo-nav>
     </mat-sidenav>
     <mat-sidenav-content>
-        Trash
+        <mat-selection-list #trashSelectionList class="trash-list">
+            <mat-list-option class="trash-list-option" *ngFor="let todo of todos$ | async">
+                {{ todo.title }}
+                <button mat-stroked-button class="trash-list-restore-button" (click)="restoreTodo(todo.id)">
+                    Restore
+                </button>
+            </mat-list-option>
+        </mat-selection-list>
+
+        <ng-container *ngIf="todos$ | async as todos">
+            <button
+                mat-raised-button
+                color="warn"
+                class="empty-todo-trash-button"
+                *ngIf="todos.length"
+                (click)="emptyTodoTrash()"
+            >
+                Empty trash
+            </button>
+
+            <div class="mat-elevation-z2 empty-todo-trash-info-message" *ngIf="!todos.length">
+                <h3>Yay! Your trash is empty 🗑️</h3>
+            </div>
+        </ng-container>
     </mat-sidenav-content>
 </mat-sidenav-container>

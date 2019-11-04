@@ -1,0 +1,37 @@
+.trash-list,
+.empty-todo-trash-button,
+.empty-todo-trash-info-message {
+    width: 35%;
+    margin: 30px auto;
+    display: block;
+}
+
+.trash-list-option {
+    border-bottom: 1px dotted gray;
+    pointer-events: none;
+}
+
+.trash-list-restore-button {
+    position: absolute;
+    top: 7px;
+    right: 7px;
+    font-size: 0.9em !important;
+    pointer-events: all;
+}
+
+.empty-todo-trash-button {
+    width: 15%;
+}
+
+.empty-todo-trash-info-message {
+    padding: 15px 0;
+    text-align: center;
+    border-radius: 5px;
+}
+
+// Remove selection list checkbox
+:host {
+    ::ng-deep.mat-pseudo-checkbox {
+        display: none !important;
+    }
+}

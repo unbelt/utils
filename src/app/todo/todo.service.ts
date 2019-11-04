@@ -10,17 +10,21 @@ export class TodoService {
     private initialTodos: ITodo[] = [
         {
             id: 1,
-            title: 'Buy milk',
-            description: 'for pankakes',
+            title: 'Buy bread 🍞 and bacon 🥓',
+            description: 'for a sandwich 🍔',
         },
         {
             id: 2,
-            title: 'Walk the dog',
-            description: 'Do not forget that!',
+            title: 'Walk the dog 🐕',
+        },
+        {
+            id: 3,
+            title: 'Take out the trash 🗑️',
+            description: 'ASAP!',
         },
     ];
 
     getTodos(): Observable<ITodo[]> {
-        return of(this.initialTodos).pipe(delay(2000));
+        return of(this.initialTodos).pipe(delay(1000));
     }
 }

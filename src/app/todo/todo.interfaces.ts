@@ -3,6 +3,6 @@ export interface ITodo {
     title: string;
     description?: string;
     isCompleted?: boolean;
-    isVisible?: boolean;
+    isInTrash?: boolean;
     isDeleted?: boolean;
 }

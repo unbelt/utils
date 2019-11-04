@@ -1,6 +1,6 @@
 import { createFeatureSelector, createSelector } from '@ngrx/store';
 import { ITodoState, todoModuleName } from '../reducers';
-import { getTodoListIsLoaded, getTodos } from './todo-list.selectors';
+import { getActiveTodos, getInactiveTodos, getTodoListIsLoaded } from './todo-list.selectors';
 import { getTodoTrash } from './todo-trash.selectors';
 
 const getTodoModule = createFeatureSelector<ITodoState>(todoModuleName);
@@ -14,9 +14,13 @@ const getTodoTrashSelector = createSelector(
     state => state.trash
 );
 
-export const getTodoListState = createSelector(
+export const getActiveTodoListState = createSelector(
     getTodoListSelector,
-    getTodos
+    getActiveTodos
+);
+export const getInactiveTodoListState = createSelector(
+    getTodoListSelector,
+    getInactiveTodos
 );
 export const getTodoListIsLoadedState = createSelector(
     getTodoListSelector,

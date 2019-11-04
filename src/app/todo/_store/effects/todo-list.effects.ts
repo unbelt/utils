@@ -3,11 +3,7 @@ import { Actions, createEffect, ofType } from '@ngrx/effects';
 import { catchError, map, switchMap } from 'rxjs/operators';
 import { ITodo } from '../../todo.interfaces';
 import { TodoService } from '../../todo.service';
-import {
-    loadTodoList,
-    loadTodoListFailure,
-    loadTodoListSuccess,
-} from '../actions/todo-list.actions';
+import { loadTodoList, loadTodoListFailure, loadTodoListSuccess } from '../actions/todo-list.actions';
 
 @Injectable()
 export class TodoListEffects {

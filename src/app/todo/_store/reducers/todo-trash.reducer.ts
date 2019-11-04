@@ -1,6 +1,6 @@
 import { Action, createReducer, on } from '@ngrx/store';
 import { ITodo } from '../../todo.interfaces';
-import { emptyTodoTrash, loadTodoTrash } from '../actions/todo-trash.actions';
+import { emptyTodoTrash, loadTodoTrashSuccess, restoreTodo } from '../actions/todo-trash.actions';
 
 export interface ITodoTrashState {
     todos: ITodo[];
@@ -12,10 +12,14 @@ export const initialTodoTrashState: ITodoTrashState = {
 
 export const reducer = createReducer<ITodoTrashState>(
     initialTodoTrashState,
-    on(loadTodoTrash, (state, { payload: { todos } }) => ({ ...state, todos })),
+    on(loadTodoTrashSuccess, (state, { payload: { todos } }) => ({ ...state, todos })),
+    on(restoreTodo, (state, { payload: { id } }) => ({
+        ...state,
+        todos: state.todos.filter((todo: ITodo) => todo.id !== id),
+    })),
     on(emptyTodoTrash, state => ({
         ...state,
-        ...state.todos.map((todo: ITodo) => (todo.isDeleted = true)),
+        todos: [],
     }))
 );
 
