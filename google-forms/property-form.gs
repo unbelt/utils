@@ -1,22 +1,22 @@
 /**
- * Erstellt in Google Forms das deutsche Formular "Objektdaten".
+ * Creates the German "Objektdaten" (property data) form in Google Forms.
  *
- * Verwendung:
- *  1. https://script.google.com -> "Neues Projekt".
- *  2. Den GESAMTEN Code einfügen (letzte Zeile: "// ENDE DES SCRIPTS").
- *  3. Speichern, Funktion `createObjektForm` ausführen, Berechtigungen bestätigen.
- *  4. Links zum Formular stehen im Ausführungsprotokoll.
+ * Usage:
+ *  1. Open https://script.google.com -> "New project".
+ *  2. Paste the ENTIRE code (last line: "// END OF SCRIPT").
+ *  3. Save, run the function `createPropertyForm`, grant permissions.
+ *  4. The form links are printed in the execution log.
  */
 
-var JA_NEIN = ['Nein', 'Ja'];
-var RICHTUNGEN = ['Nord', 'Nordost', 'Ost', 'Südost', 'Süd', 'Südwest', 'West', 'Nordwest'];
-var BLICK = 'Vom Hauptwohnraum (z. B. Wohnzimmer) aus gesehen, nicht vom Balkon, mit normalem Blickfeld';
+var YES_NO = ['Nein', 'Ja'];
+var DIRECTIONS = ['Nord', 'Nordost', 'Ost', 'Südost', 'Süd', 'Südwest', 'West', 'Nordwest'];
+var VIEW_HINT = 'Vom Hauptwohnraum (z. B. Wohnzimmer) aus gesehen, nicht vom Balkon, mit normalem Blickfeld';
 
-// Feldtypen: h = Abschnittsüberschrift, t = Text, n = Zahl, d = Dropdown, c = Kontrollkästchen
-// Aufbau: [Typ, Titel, Hilfetext, Pflichtfeld, Auswahlmöglichkeiten]
+// Field types: h = section header, t = text, n = number, d = dropdown, c = checkboxes
+// Format: [type, title, help text, required, choices]
 var FIELDS = [
   ['d', 'Objektart', '', true, ['Eigentumswohnung', 'Einfamilienhaus', 'Reihenhaus', 'Mehrfamilienhaus', 'Grundstück', 'Sonstiges']],
-  ['d', 'Geplante Vermietung', '', true, JA_NEIN],
+  ['d', 'Geplante Vermietung', '', true, YES_NO],
   ['t', 'Einlagezahl (optional)', 'laut Grundbuchsauszug'],
   ['t', 'Katastralgemeinde/Katastralgemeindenummer (optional)', ''],
   ['t', 'Grundstücksnummer (optional)', 'laut Grundbuchsauszug'],
@@ -35,7 +35,7 @@ var FIELDS = [
   ['t', 'Top', '', true],
 
   ['h', 'Baujahr'],
-  ['d', 'Objekt in Bau', '', true, JA_NEIN],
+  ['d', 'Objekt in Bau', '', true, YES_NO],
   ['n', 'Baujahr', '', true],
 
   ['h', 'Flächen'],
@@ -69,8 +69,8 @@ var FIELDS = [
   ['n', 'Innenputz, Innenstiegen (optional)', ''],
 
   ['h', 'Ausrichtung'],
-  ['d', 'Die Wohnräume (Wohnzimmer usw.) sind ausgerichtet nach', BLICK, true, RICHTUNGEN],
-  ['d', 'Die Wohnung ist ausgerichtet zur/zum', BLICK, true, ['Hauptstraße, Bahnanlagen, Gewerbe-/Industriegebiet', 'Nebenstraße / ruhige Straße', 'Innenhof', 'Grünfläche / Garten', 'Sonstiges']],
+  ['d', 'Die Wohnräume (Wohnzimmer usw.) sind ausgerichtet nach', VIEW_HINT, true, DIRECTIONS],
+  ['d', 'Die Wohnung ist ausgerichtet zur/zum', VIEW_HINT, true, ['Hauptstraße, Bahnanlagen, Gewerbe-/Industriegebiet', 'Nebenstraße / ruhige Straße', 'Innenhof', 'Grünfläche / Garten', 'Sonstiges']],
 
   ['h', 'Badausstattung'],
   ['n', 'Anzahl der Badezimmer', '', true],
@@ -88,7 +88,7 @@ var FIELDS = [
   ['c', 'Weitere Ausstattungsmerkmale', '', false, ['Hochwertige Innentüren (unter anderem Norgia-Türen)', 'Flächenheizung (Wand-/Fußbodenheizung)', 'Großzügige Freiflächen', 'Lift', 'Sauna oder Infrarotkabine', 'Elektrisches Garagentor', 'Exklusive Bodenbeläge (unter anderem Natursteinboden, Sternparkett usw.)']]
 ];
 
-function createObjektForm() {
+function createPropertyForm() {
   var form = FormApp.create('Objektdaten');
   form.setDescription('Angaben zum Objekt. Pflichtfelder sind mit * gekennzeichnet.');
 
@@ -121,8 +121,8 @@ function createObjektForm() {
 
   form.setConfirmationMessage('Vielen Dank! Ihre Angaben wurden gespeichert.');
 
-  Logger.log('Bearbeiten: ' + form.getEditUrl());
-  Logger.log('Ausfüllen:  ' + form.getPublishedUrl());
+  Logger.log('Edit URL: ' + form.getEditUrl());
+  Logger.log('Form URL: ' + form.getPublishedUrl());
 }
 
-// ENDE DES SCRIPTS
+// END OF SCRIPT
